@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-content>
+        <section *ngIf="onEdit">
+            <mat-form-field class="fields">
+                <input matInput type="text" name="login" placeholder="Login" [(ngModel)]="login">
+                <mat-icon matSuffix> fingerprint </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fields">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+                <mat-icon matSuffix> lock </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="number" placeholder="Age" [(ngModel)]="age">
+            </mat-form-field>
+            <section>
+                <mat-radio-group [(ngModel)]="typeAuth">
+                    <mat-radio-button value="0">Admin</mat-radio-button>
+                    <mat-radio-button value="1">User</mat-radio-button>
+                </mat-radio-group>
+            </section>
+            <section>
+                <button mat-stroked-button mat-ini-fab (click)="save()">
+                    <mat-icon> done </mat-icon> SALVAR
+                    <!-- Salvar <mat-icon> done </mat-icon>  -->
+                </button>
+                <button mat-stroked-button mat-ini-fac (click)="cancel()">
+                    <mat-icon>cancel</mat-icon> Cancelar
+                </button>
+            </section>
+        </section>
+
+        <section *ngIf="!onEdit">
+            {{user.login}} / {{user.age}}
+            <button mat-icon-button color="primary" (click)="edit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="remove()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </section>
+    </mat-card-content>
+</mat-card>

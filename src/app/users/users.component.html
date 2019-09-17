@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-title>First Crud</mat-card-title>
+    <mat-card-content>
+        <section>
+            <mat-form-field class="fields">
+                <input matInput type="text" name="login" placeholder="Login" [(ngModel)]="login">
+                <mat-icon matSuffix> fingerprint </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fields">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+                <mat-icon matSuffix> lock </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="number" placeholder="Age" [(ngModel)]="age">
+            </mat-form-field>
+            <section>
+                <mat-radio-group [(ngModel)]="typeAuth">
+                    <mat-radio-button value="0">Admin</mat-radio-button>
+                    <mat-radio-button value="1">User</mat-radio-button>
+                </mat-radio-group>
+            </section>
+            <section>
+                <button mat-stroked-button mat-ini-fab (click)="save()">
+                    <mat-icon> done </mat-icon> SALVAR
+                    <!-- Salvar <mat-icon> done </mat-icon>  -->
+                </button>
+            </section>
+        </section>
+    </mat-card-content>
+</mat-card>
+<app-edit-users 
+    *ngFor="let u of users; let i=index"
+    [user]="u"
+    (removeUser)="deleteUser(i)"
+    (updateUser)="updateUser($event, i)">
+    <!-- Login:{{u.login}} - Password:{{u.password}} - Age:{{u.age}} | Type:{{u.typeAuth}} -->
+</app-edit-users>

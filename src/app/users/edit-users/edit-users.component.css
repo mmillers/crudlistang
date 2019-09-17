@@ -1,0 +1,11 @@
+mat-card {
+    margin: 30px;
+}
+
+.fields {
+    padding: 10px;
+}
+
+mat-radio-button {
+    padding: 7px;
+}
